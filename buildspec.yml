@@ -1,0 +1,15 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      java: corretto8
+      python: 3.8
+  build:
+    commands:
+      - echo Building by MOISE
+      - aws cloudformation package --template-file ec2-userdata-template-moise.yml --s3-bucket my-artifacts-template --output-template-file output-template.yaml
+      - echo  ********Template has bee package successfully********
+artifacts:
+  files:
+    - ec2-userdata-template-moise.yml
+    - output-template.yaml
